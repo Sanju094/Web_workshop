@@ -1,0 +1,36 @@
+.container {
+    width: 300px;
+    margin: auto;
+    padding: 20px;
+    text-align: left;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Adds spacing between elements */
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkblue;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        .container {
+    width: 300px;
+    margin: auto;
+    padding: 20px;
+    text-align: left;
+    }
+
+    form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    }
+
+    label {
+    font-weight: bold;
+    }
+
+    input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkblue;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Register</h2>
+        <form id="registerForm">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("registerForm").addEventListener("submit", async function(event) {
+            event.preventDefault(); // Prevent form from refreshing the page
+            
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            const response = await fetch("http://localhost:5000/api/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email, password })
+            });
+
+            if (response.ok) {
+                alert("Registered successfully!");
+                window.location.href = "success.html"; // Redirect to another page
+            } else {
+                alert("Registration failed! Please try again.");
+            }
+        });
+    </script>
+</body>
+</html>
